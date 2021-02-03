@@ -6,7 +6,7 @@
 ## Use
 ``import QRButton from "obyte-qr-button"``
 
-## This package is needed packages:
+## Required packages:
  - react
  - react-dom
  - antd (with import styles)
@@ -21,7 +21,7 @@ const config = {
   title: <span>Scan this QR code <br /> with your mobile phone</span>,
   downloadTitle: "Download Obyte wallet",
   tooltip: "This will open your Obyte wallet installed on this computer and send the transaction",
-  tooltipMobil: "Send the transaction from your mobile phone",
+  tooltipMobile: "Send the transaction from your mobile phone",
   install: "Install Obyte wallet for [ios] or [android] if you don't have one yet",
   obyteIn: "Obyte in"
 }

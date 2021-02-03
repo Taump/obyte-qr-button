@@ -15,16 +15,16 @@ const PlayMarketUrl = "https://play.google.com/store/apps/details?id=org.bytebal
 
 const QRButton = React.forwardRef(({ href, children, onClick, config, ...props }, ref) => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const [typeDownloadModal, setTypeDownloadModal] = useState(false);
+  const [downloadModalType, setDownloadModalType] = useState(false);
 
   const Install = reactStringReplace(config.install || "Install Obyte wallet for [ios] or [android] if you don't have one yet", /\[(\w+)\]/g, (match, index) => {
-    if (match === "ios") return <Button key={"ios" + index} style={{ padding: 0, lineHeight: "auto" }} size="small" type="link" onClick={() => setTypeDownloadModal("ios")}>iOS</Button>
-    if (match === "android") return <Button key={"android" + index} size="small" style={{ padding: 0, lineHeight: "auto" }} type="link" onClick={() => setTypeDownloadModal("android")}>Android</Button>
+    if (match === "ios") return <Button key={"ios" + index} style={{ padding: 0, lineHeight: "auto" }} size="small" type="link" onClick={() => setDownloadModalType("ios")}>iOS</Button>
+    if (match === "android") return <Button key={"android" + index} size="small" style={{ padding: 0, lineHeight: "auto" }} type="link" onClick={() => setDownloadModalType("android")}>Android</Button>
   });
 
   return (<React.Fragment>
     <Button.Group>
-      <Tooltip title={config.tooltipMobil || "Send the transaction from your mobile phone"}>
+      <Tooltip title={config.tooltipMobile || "Send the transaction from your mobile phone"}>
         <Button icon={<QrcodeOutlined />} {...props} onClick={(ev) => { setModalVisible(true); onClick && onClick(ev); }} />
       </Tooltip>
       <Tooltip title={config.tooltip || "This will open your Obyte wallet installed on this computer and send the transaction"}>
@@ -48,17 +48,17 @@ const QRButton = React.forwardRef(({ href, children, onClick, config, ...props }
         </div>
       </div>
       <Modal
-        visible={!!typeDownloadModal}
-        onCancel={() => setTypeDownloadModal(false)}
+        visible={!!downloadModalType}
+        onCancel={() => setDownloadModalType(false)}
         width={340}
         footer={null}
       >
         <div style={{ textAlign: "center" }}>
           <h2>{config.downloadTitle || "Download Obyte wallet"}</h2>
-          <QRCode size={240} renderAs="svg" value={typeDownloadModal === "ios" ? AppStoreUrl : PlayMarketUrl} />
+          <QRCode size={240} renderAs="svg" value={downloadModalType === "ios" ? AppStoreUrl : PlayMarketUrl} />
           <div style={{ display: "inline-flex", alignItems: "center", marginTop: 25 }}>
-            <span>{config.obyteIn || "Obyte in"}</span> <a target="_blank" style={{ display: "inline-flex", alignItems: "center" }} rel="noopener" href={typeDownloadModal === "ios" ? AppStoreUrl : PlayMarketUrl}>
-              {typeDownloadModal === "ios" ? <React.Fragment><AppStoreIcon /> Apple App Store</ React.Fragment> : <React.Fragment><PlayMarketIcon /> Google Play</React.Fragment>}</a>
+            <span>{config.obyteIn || "Obyte in"}</span> <a target="_blank" style={{ display: "inline-flex", alignItems: "center" }} rel="noopener" href={downloadModalType === "ios" ? AppStoreUrl : PlayMarketUrl}>
+              {downloadModalType === "ios" ? <React.Fragment><AppStoreIcon /> Apple App Store</ React.Fragment> : <React.Fragment><PlayMarketIcon /> Google Play</React.Fragment>}</a>
           </div>
         </div>
       </Modal>
@@ -76,7 +76,7 @@ QRButton.propTypes = {
     googlePlayUrl: PropTypes.string,
     downloadTitle: PropTypes.node,
     tooltip: PropTypes.string,
-    tooltipMobil: PropTypes.string,
+    tooltipMobile: PropTypes.string,
     install: PropTypes.string,
     obyteIn: PropTypes.string,
   }),
