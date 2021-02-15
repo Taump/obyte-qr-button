@@ -1,6 +1,6 @@
 {
   "name": "obyte-qr-button",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "QR Button for Obyte dApp",
   "main": "build/index.js",
   "dependencies": {

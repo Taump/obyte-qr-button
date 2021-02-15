@@ -13,7 +13,7 @@ const { Text } = Typography;
 const AppStoreUrl = "https://itunes.apple.com/us/app/byteball/id1147137332?ls=1&mt=8";
 const PlayMarketUrl = "https://play.google.com/store/apps/details?id=org.byteball.wallet";
 
-const QRButton = React.forwardRef(({ href, children, onClick, config, ...props }, ref) => {
+const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {}, ...props }, ref) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [downloadModalType, setDownloadModalType] = useState(false);
 
@@ -24,10 +24,10 @@ const QRButton = React.forwardRef(({ href, children, onClick, config, ...props }
 
   return (<React.Fragment>
     <Button.Group>
-      <Tooltip title={config.tooltipMobile || "Send the transaction from your mobile phone"}>
+      <Tooltip key="mobile" title={config.tooltipMobile || "Send the transaction from your mobile phone"}>
         <Button icon={<QrcodeOutlined />} {...props} onClick={(ev) => { setModalVisible(true); onClick && onClick(ev); }} />
       </Tooltip>
-      <Tooltip title={config.tooltip || "This will open your Obyte wallet installed on this computer and send the transaction"}>
+      <Tooltip key="desktop" title={config.tooltip || "This will open your Obyte wallet installed on this computer and send the transaction"}>
         <Button href={href} onClick={onClick && onClick} {...props} ref={ref}>{children}</Button>
       </Tooltip>
     </Button.Group>
