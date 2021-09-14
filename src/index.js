@@ -34,13 +34,12 @@ const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {},
     <Modal
       width={340}
       footer={null}
-      className="QRButtonModal"
       visible={isModalVisible} onCancel={() => setModalVisible(false)}
     >
       <div style={{ textAlign: "center" }}>
         <h2>{config.title || <span>Scan this QR code <br /> with your mobile phone</span>}</h2>
         <a href={href}>
-          <QRCode size={240} renderAs="svg" value={href} />
+          <QRCode className="obyte-qr-code" size={240} renderAs="svg" value={href} />
         </a>
         <div style={{ marginTop: 25 }}>
           <Text type="secondary" style={{ fontSize: 12 }}>
@@ -56,7 +55,7 @@ const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {},
       >
         <div style={{ textAlign: "center" }}>
           <h2>{config.downloadTitle || "Download Obyte wallet"}</h2>
-          <QRCode size={240} renderAs="svg" value={downloadModalType === "ios" ? AppStoreUrl : PlayMarketUrl} />
+          <QRCode size={240} className="obyte-qr-code" renderAs="svg" value={downloadModalType === "ios" ? AppStoreUrl : PlayMarketUrl} />
           <div style={{ display: "inline-flex", alignItems: "center", marginTop: 25 }}>
             <span>{config.obyteIn || "Obyte in"}</span> <a target="_blank" style={{ display: "inline-flex", alignItems: "center" }} rel="noopener" href={downloadModalType === "ios" ? AppStoreUrl : PlayMarketUrl}>
               {downloadModalType === "ios" ? <React.Fragment><AppStoreIcon /> Apple App Store</ React.Fragment> : <React.Fragment><PlayMarketIcon /> Google Play</React.Fragment>}</a>
