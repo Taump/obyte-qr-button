@@ -34,6 +34,7 @@ const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {},
     <Modal
       width={340}
       footer={null}
+      className="QRButtonModal"
       visible={isModalVisible} onCancel={() => setModalVisible(false)}
     >
       <div style={{ textAlign: "center" }}>
