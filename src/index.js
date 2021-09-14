@@ -10,7 +10,7 @@ import { PlayMarketIcon } from "./PlayMarketIcon";
 
 const { Text } = Typography;
 
-const AppStoreUrl = "https://itunes.apple.com/us/app/byteball/id1147137332?ls=1&mt=8";
+const AppStoreUrl = "https://apps.apple.com/us/app/byteball/id1147137332#?platform=iphone";
 const PlayMarketUrl = "https://play.google.com/store/apps/details?id=org.byteball.wallet";
 
 const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {}, ...props }, ref) => {
