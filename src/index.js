@@ -8,6 +8,8 @@ import reactStringReplace from "react-string-replace";
 import { AppStoreIcon } from "./AppStoreIcon";
 import { PlayMarketIcon } from "./PlayMarketIcon";
 
+import "./index.css";
+
 const { Text } = Typography;
 
 const AppStoreUrl = "https://apps.apple.com/us/app/byteball/id1147137332#?platform=iphone";
@@ -23,7 +25,7 @@ const QRButton = React.forwardRef(({ href = "#", children, onClick, config = {},
   });
 
   return (<React.Fragment>
-    <Button.Group>
+    <Button.Group className="qrBtnGroup">
       <Tooltip key="mobile" title={config.tooltipMobile || "Send the transaction from your mobile phone"}>
         <Button icon={<QrcodeOutlined />} {...props} onClick={(ev) => { setModalVisible(true); onClick && onClick(ev); }} />
       </Tooltip>

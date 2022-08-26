@@ -1,0 +1,5 @@
+.qrBtnGroup a.ant-btn-disabled {
+    color: hsla(0,0%,100%,.3) !important;
+    background-color: hsla(0,0%,100%,.08) !important;
+    border-color: #434343 !important;
+}
